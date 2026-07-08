@@ -312,7 +312,40 @@ border-radius:20px;
 
 </div>
 
+<script type="module">
 
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyCUMsfZ4bNr2xRQyx50gdhID4oGhILDFrI",
+  authDomain: "market-alameer-15f2d.firebaseapp.com",
+  projectId: "market-alameer-15f2d",
+  storageBucket: "market-alameer-15f2d.firebasestorage.app",
+  messagingSenderId: "981021538410",
+  appId: "1:981021538410:web:1be7ed70e4272391ebf213",
+  measurementId: "G-X1K2NPH0TS"
+};
+
+const app = initializeApp(firebaseConfig);
+
+const db = getFirestore(app);
+
+async function loadProducts(){
+
+  const products = await getDocs(collection(db,"products"));
+
+  products.forEach((doc)=>{
+
+    console.log(doc.data());
+
+  });
+
+}
+
+loadProducts();
+
+</script>
 
 </body>
 </html>
