@@ -95,14 +95,24 @@ productForm.addEventListener("submit", function (e) {
         description,
         category
     };
+try {
 
-    products.push(product);
+    await addDoc(collection(db, "products"), product);
 
-    renderProducts();
+    alert("تمت إضافة المنتج");
 
     productForm.reset();
 
-});
+    loadProducts();
+
+} catch(error) {
+
+    console.log(error);
+    alert("حدث خطأ أثناء حفظ المنتج");
+
+}
+    
+
 
 // عرض المنتجات
 function renderProducts() {
@@ -146,3 +156,30 @@ buttons.forEach(button => {
     });
 
 });
+async function loadProducts(){
+
+    productsList.innerHTML = "";
+
+    const snapshot = await getDocs(collection(db, "products"));
+
+    snapshot.forEach((doc)=>{
+
+        const product = doc.data();
+
+        productsList.innerHTML += `
+
+        <div class="product-card">
+
+        <h3>${product.name}</h3>
+
+        <p>${product.price} د.ع</p>
+
+        <small>${product.category}</small>
+
+        </div>
+
+        `;
+
+    });
+
+}
