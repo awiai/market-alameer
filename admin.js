@@ -1,3 +1,4 @@
+alert("تم تشغيل admin.js");
 import { firebaseConfig } from "./config.js";
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
