@@ -111,3 +111,22 @@ function renderProducts() {
     });
 
 }
+// ========================================
+// تجهيز اللوحة
+// ========================================
+
+const buttons = document.querySelectorAll("nav button");
+
+buttons.forEach(button => {
+
+    button.addEventListener("click", () => {
+
+        buttons.forEach(btn => {
+            btn.style.opacity = "0.7";
+        });
+
+        button.style.opacity = "1";
+
+    });
+
+});
