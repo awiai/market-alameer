@@ -20,12 +20,7 @@
 
 <h1>🛒 ماركت الأمير</h1>
 
-<p>لوحة التحكم</p>
-
-<input
-type="email"
-id="email"
-placeholder="البريد الإلكتروني">
+<p>لوحة تحكم المدير</p>
 
 <input
 type="password"
@@ -33,7 +28,9 @@ id="password"
 placeholder="كلمة المرور">
 
 <button id="loginBtn">
-تسجيل الدخول
+
+دخول
+
 </button>
 
 </div>
@@ -44,13 +41,13 @@ placeholder="كلمة المرور">
 
 <header>
 
-<h2>لوحة التحكم</h2>
+<h2>
+
+لوحة التحكم
+
+</h2>
 
 <div class="admin-info">
-
-<span id="adminName">
-المدير
-</span>
 
 <button id="logoutBtn">
 
@@ -65,27 +62,19 @@ placeholder="كلمة المرور">
 <nav>
 
 <button id="productsPage">
-
 📦 المنتجات
-
 </button>
 
 <button id="ordersPage">
-
 🛒 الطلبات
-
 </button>
 
 <button id="offersPage">
-
 🔥 العروض
-
 </button>
 
 <button id="settingsPage">
-
 ⚙️ الإعدادات
-
 </button>
 
 </nav>
@@ -94,11 +83,7 @@ placeholder="كلمة المرور">
 
 <section id="products">
 
-<h2>
-
-إضافة منتج جديد
-
-</h2>
+<h2>إضافة منتج</h2>
 
 <form id="productForm">
 
@@ -114,35 +99,15 @@ placeholder="السعر">
 
 <select id="productCategory">
 
-<option>
+<option value="">اختر القسم</option>
 
-اختر القسم
+<option>مشروبات</option>
 
-</option>
+<option>ألبان</option>
 
-<option>
+<option>منظفات</option>
 
-مشروبات
-
-</option>
-
-<option>
-
-خضار وفواكه
-
-</option>
-
-<option>
-
-ألبان
-
-</option>
-
-<option>
-
-منظفات
-
-</option>
+<option>مواد غذائية</option>
 
 </select>
 
@@ -150,7 +115,7 @@ placeholder="السعر">
 id="productImage"
 type="file">
 
-<button>
+<button type="submit">
 
 إضافة المنتج
 
@@ -159,12 +124,6 @@ type="file">
 </form>
 
 <hr>
-
-<h2>
-
-كل المنتجات
-
-</h2>
 
 <div id="productsList">
 
@@ -175,8 +134,6 @@ type="file">
 </section>
 
 </main>
-
-</div>
 
 <script type="module" src="admin.js"></script>
 
