@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>لوحة تحكم ماركت الأمير</title>
+
+<link rel="stylesheet" href="admin.css">
+
+</head>
+
+<body>
+
+<div class="login-page">
+
+<div class="login-box">
+
+<h1>🛒 ماركت الأمير</h1>
+
+<p>لوحة التحكم</p>
+
+<input
+type="email"
+id="email"
+placeholder="البريد الإلكتروني">
+
+<input
+type="password"
+id="password"
+placeholder="كلمة المرور">
+
+<button id="loginBtn">
+تسجيل الدخول
+</button>
+
+</div>
+
+</div>
+
+<div id="dashboard" style="display:none;">
+
+<header>
+
+<h2>لوحة التحكم</h2>
+
+<div class="admin-info">
+
+<span id="adminName">
+المدير
+</span>
+
+<button id="logoutBtn">
+
+تسجيل الخروج
+
+</button>
+
+</div>
+
+</header>
+
+<nav>
+
+<button id="productsPage">
+
+📦 المنتجات
+
+</button>
+
+<button id="ordersPage">
+
+🛒 الطلبات
+
+</button>
+
+<button id="offersPage">
+
+🔥 العروض
+
+</button>
+
+<button id="settingsPage">
+
+⚙️ الإعدادات
+
+</button>
+
+</nav>
+
+<main>
+
+<section id="products">
+
+<h2>
+
+إضافة منتج جديد
+
+</h2>
+
+<form id="productForm">
+
+<input
+id="productName"
+type="text"
+placeholder="اسم المنتج">
+
+<input
+id="productPrice"
+type="number"
+placeholder="السعر">
+
+<select id="productCategory">
+
+<option>
+
+اختر القسم
+
+</option>
+
+<option>
+
+مشروبات
+
+</option>
+
+<option>
+
+خضار وفواكه
+
+</option>
+
+<option>
+
+ألبان
+
+</option>
+
+<option>
+
+منظفات
+
+</option>
+
+</select>
+
+<input
+id="productImage"
+type="file">
+
+<button>
+
+إضافة المنتج
+
+</button>
+
+</form>
+
+<hr>
+
+<h2>
+
+كل المنتجات
+
+</h2>
+
+<div id="productsList">
+
+لا توجد منتجات
+
+</div>
+
+</section>
+
+</main>
+
+</div>
+
+<script type="module" src="admin.js"></script>
+
+</body>
+
+</html>
