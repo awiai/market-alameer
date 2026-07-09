@@ -339,7 +339,15 @@ const app = initializeApp(firebaseConfig);
 
 const db = getFirestore(app);
 
+document.addEventListener("click", (e)=>{
 
+if(e.target.classList.contains("buy-btn")){
+
+document.getElementById("orderBox").style.display="block";
+
+}
+
+});
 
 async function loadProducts(){
 
@@ -392,7 +400,7 @@ box.innerHTML += `
 <br><br>
 
 
-<button>
+<button class="buy-btn">
 شراء
 </button>
 
@@ -413,7 +421,32 @@ loadProducts();
 
 
 </script>
+<div id="orderBox" style="
+display:none;
+position:fixed;
+top:20%;
+left:10%;
+right:10%;
+background:white;
+padding:20px;
+border-radius:20px;
+box-shadow:0 5px 20px #999;
+z-index:100;
+">
 
+<h3>إتمام الطلب</h3>
+
+<input id="customerName" placeholder="الاسم" style="width:100%;padding:10px;margin:5px">
+
+<input id="customerPhone" placeholder="رقم الهاتف" style="width:100%;padding:10px;margin:5px">
+
+<input id="customerAddress" placeholder="العنوان" style="width:100%;padding:10px;margin:5px">
+
+<button id="sendOrder">
+إرسال الطلب
+</button>
+
+</div>
 
 </body>
 </html>
