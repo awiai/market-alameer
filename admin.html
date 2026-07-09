@@ -25,12 +25,10 @@
 <input
 type="password"
 id="password"
-placeholder="كلمة المرور">
+placeholder="أدخل كلمة المرور">
 
 <button id="loginBtn">
-
 دخول
-
 </button>
 
 </div>
@@ -41,18 +39,14 @@ placeholder="كلمة المرور">
 
 <header>
 
-<h2>
-
-لوحة التحكم
-
-</h2>
+<h2>لوحة التحكم</h2>
 
 <div class="admin-info">
 
+<span>👤 المدير</span>
+
 <button id="logoutBtn">
-
 تسجيل الخروج
-
 </button>
 
 </div>
@@ -61,73 +55,67 @@ placeholder="كلمة المرور">
 
 <nav>
 
-<button id="productsPage">
-📦 المنتجات
-</button>
+<button id="productsPage">📦 المنتجات</button>
 
-<button id="ordersPage">
-🛒 الطلبات
-</button>
+<button id="ordersPage">🛒 الطلبات</button>
 
-<button id="offersPage">
-🔥 العروض
-</button>
+<button id="offersPage">🔥 العروض</button>
 
-<button id="settingsPage">
-⚙️ الإعدادات
-</button>
+<button id="settingsPage">⚙️ الإعدادات</button>
 
 </nav>
 
 <main>
+  <section id="products">
 
-<section id="products">
-
-<h2>إضافة منتج</h2>
+<h2>إضافة منتج جديد</h2>
 
 <form id="productForm">
 
 <input
-id="productName"
 type="text"
-placeholder="اسم المنتج">
+id="productName"
+placeholder="اسم المنتج"
+required>
 
 <input
-id="productPrice"
 type="number"
-placeholder="السعر">
+id="productPrice"
+placeholder="السعر"
+required>
+
+<textarea
+id="productDescription"
+placeholder="وصف المنتج"></textarea>
 
 <select id="productCategory">
 
 <option value="">اختر القسم</option>
-
-<option>مشروبات</option>
-
-<option>ألبان</option>
-
-<option>منظفات</option>
-
-<option>مواد غذائية</option>
+<option value="مشروبات">مشروبات</option>
+<option value="مواد غذائية">مواد غذائية</option>
+<option value="ألبان">ألبان</option>
+<option value="منظفات">منظفات</option>
 
 </select>
 
 <input
+type="file"
 id="productImage"
-type="file">
+accept="image/*">
 
 <button type="submit">
-
 إضافة المنتج
-
 </button>
 
 </form>
 
 <hr>
 
+<h2>المنتجات</h2>
+
 <div id="productsList">
 
-لا توجد منتجات
+لا توجد منتجات حتى الآن
 
 </div>
 
@@ -138,5 +126,4 @@ type="file">
 <script type="module" src="admin.js"></script>
 
 </body>
-
 </html>
