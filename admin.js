@@ -1,7 +1,6 @@
-// ===============================
-// ماركت الأمير - لوحة التحكم
-// الجزء الأول
-// ===============================
+// ======================================
+// لوحة تحكم ماركت الأمير - المرحلة الأولى
+// ======================================
 
 // كلمة مرور المدير
 const ADMIN_PASSWORD = "123456";
@@ -14,19 +13,22 @@ const passwordInput = document.getElementById("password");
 const loginBtn = document.getElementById("loginBtn");
 const logoutBtn = document.getElementById("logoutBtn");
 
+// إخفاء لوحة التحكم عند فتح الصفحة
+dashboard.style.display = "none";
+
 // تسجيل الدخول
 loginBtn.addEventListener("click", () => {
 
     const password = passwordInput.value.trim();
 
-    if(password === ADMIN_PASSWORD){
+    if (password === ADMIN_PASSWORD) {
 
         loginPage.style.display = "none";
         dashboard.style.display = "block";
 
-        localStorage.setItem("adminLogged","true");
+        localStorage.setItem("adminLogin", "true");
 
-    }else{
+    } else {
 
         alert("كلمة المرور غير صحيحة");
 
@@ -37,14 +39,14 @@ loginBtn.addEventListener("click", () => {
 // تسجيل الخروج
 logoutBtn.addEventListener("click", () => {
 
-    localStorage.removeItem("adminLogged");
+    localStorage.removeItem("adminLogin");
 
     location.reload();
 
 });
 
-// إبقاء تسجيل الدخول
-if(localStorage.getItem("adminLogged") === "true"){
+// إذا كان مسجل الدخول سابقاً
+if (localStorage.getItem("adminLogin") === "true") {
 
     loginPage.style.display = "none";
     dashboard.style.display = "block";
