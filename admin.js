@@ -14,13 +14,10 @@ const app = initializeApp(firebaseConfig);
 
 const db = getFirestore(app);
 
-// ========================================
-// Market Alameer Admin Panel
-// الجزء الأول
-// ========================================
 
 // كلمة مرور المدير
 const ADMIN_PASSWORD = "123456";
+
 
 // عناصر الصفحة
 const loginPage = document.querySelector(".login-page");
@@ -29,8 +26,6 @@ const loginBtn = document.getElementById("loginBtn");
 const logoutBtn = document.getElementById("logoutBtn");
 const passwordInput = document.getElementById("password");
 
-// إخفاء لوحة التحكم عند بداية التشغيل
-dashboard.style.display = "none";
 
 // تسجيل الدخول
 loginBtn.addEventListener("click", () => {
@@ -52,6 +47,7 @@ loginBtn.addEventListener("click", () => {
 
 });
 
+
 // تسجيل الخروج
 logoutBtn.addEventListener("click", () => {
 
@@ -61,110 +57,90 @@ logoutBtn.addEventListener("click", () => {
 
 });
 
-// إذا كان المدير مسجلاً مسبقاً
+
+// حفظ تسجيل الدخول
 if (localStorage.getItem("admin_login") === "true") {
 
     loginPage.style.display = "none";
     dashboard.style.display = "block";
 
 }
-// ========================================
-// إدارة المنتجات (المرحلة الأولى)
-// ========================================
 
+
+// المنتجات
 const productForm = document.getElementById("productForm");
 const productsList = document.getElementById("productsList");
 
-// قائمة مؤقتة للمنتجات
-let products = [];
 
 // إضافة منتج
-productForm.addEventListener("submit", function (e) {
+productForm.addEventListener("submit", async function (e) {
 
     e.preventDefault();
+
 
     const name = document.getElementById("productName").value.trim();
     const price = document.getElementById("productPrice").value.trim();
     const description = document.getElementById("productDescription").value.trim();
     const category = document.getElementById("productCategory").value;
 
+
     const product = {
-        id: Date.now(),
+
         name,
         price,
         description,
-        category
+        category,
+        createdAt: Date.now()
+
     };
-try {
 
-    await addDoc(collection(db, "products"), product);
 
-    alert("تمت إضافة المنتج");
+    try {
 
-    productForm.reset();
+        await addDoc(collection(db, "products"), product);
 
-    loadProducts();
+        alert("تمت إضافة المنتج");
 
-} catch(error) {
+        productForm.reset();
 
-    console.log(error);
-    alert("حدث خطأ أثناء حفظ المنتج");
+        loadProducts();
 
-}
-    
+
+    } catch(error) {
+
+        console.log(error);
+
+        alert("حدث خطأ أثناء حفظ المنتج");
+
+    }
+
+
+});
 
 
 // عرض المنتجات
-function renderProducts() {
-
-    if (products.length === 0) {
-        productsList.innerHTML = "لا توجد منتجات";
-        return;
-    }
-
-    productsList.innerHTML = "";
-
-    products.forEach(product => {
-
-        productsList.innerHTML += `
-        <div class="product-card">
-            <h3>${product.name}</h3>
-            <p>${product.price} د.ع</p>
-            <small>${product.category}</small>
-        </div>
-        `;
-
-    });
-
-}
-// ========================================
-// تجهيز اللوحة
-// ========================================
-
-const buttons = document.querySelectorAll("nav button");
-
-buttons.forEach(button => {
-
-    button.addEventListener("click", () => {
-
-        buttons.forEach(btn => {
-            btn.style.opacity = "0.7";
-        });
-
-        button.style.opacity = "1";
-
-    });
-
-});
 async function loadProducts(){
 
     productsList.innerHTML = "";
 
+
     const snapshot = await getDocs(collection(db, "products"));
+
+
+    if(snapshot.empty){
+
+        productsList.innerHTML = "لا توجد منتجات";
+
+        return;
+
+    }
+
 
     snapshot.forEach((doc)=>{
 
+
         const product = doc.data();
+
 
         productsList.innerHTML += `
 
@@ -180,6 +156,12 @@ async function loadProducts(){
 
         `;
 
+
     });
 
+
 }
+
+
+// تشغيل تحميل المنتجات
+loadProducts();
